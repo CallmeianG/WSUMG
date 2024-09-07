@@ -13,6 +13,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.core.MediaType;
+import org.json.simple.JSONObject;
+
 
 /**
  * REST Web Service
@@ -30,12 +32,15 @@ public class GenericResource {
     }
     
     @GET
-    @Path("pruebaUMG")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String pruebaUMG (){
+    @Path("/pruebaUMG")
+    @Produces (MediaType.TEXT_PLAIN)
+    public String pruebaUMG(){
         System.out.println("Entrando a consumir pruebaUMG");
-        return "Hola mundo WS y los de la UMG tambien";
+        JSONObject json = new JSONObject();
+        json.put("Nombre", "Ian");
+        json.put("Apellido", "Garcia");
+        return json.toJSONString();
     }
 }
 
-//localhost:8080/WSUMG/webresources/WSUMGH/pruebaUMG
+//localhost:8080/WSUMG/resources/WSUMGH/pruebaUMG
