@@ -4,6 +4,7 @@
  */
 package com.edu.umg.wsumg;
 
+import com.edu.umg.dpbase64.DpBase64_codificar;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -41,9 +42,12 @@ public class GenericResource {
         json.put("Apellido", "Garcia");
         String jsonString = json.toJSONString();
         
-       
-        String encodedJson = Base64.getEncoder().encodeToString(jsonString.getBytes());
         
+        
+        
+        DpBase64_codificar cof = new DpBase64_codificar();
+        
+        String encodedJson = cof.Codificar(json);
         
         return encodedJson;
     }
